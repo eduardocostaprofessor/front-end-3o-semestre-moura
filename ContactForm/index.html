@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang=""p->
+<html lang="" p->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -41,9 +41,7 @@
               />
             </div>
           </div>
-          
-          
-          
+
           <!-- criar a linha do e-mail -->
           <div class="contact-form__linha">
             <div class="contact-form__col-a">
@@ -59,10 +57,7 @@
               />
             </div>
           </div>
-          
-          
-          
-          
+
           <!-- Telefone-->
           <div class="contact-form__linha">
             <div class="contact-form__col-a">
@@ -92,7 +87,6 @@
               />
             </div>
           </div>
-
 
           <!-- Endereço 1-->
           <div class="contact-form__linha">
@@ -124,9 +118,7 @@
             </div>
           </div>
 
-
-
-           <!-- Endereço 2 -->
+          <!-- Endereço 2 -->
           <div class="contact-form__linha">
             <div class="contact-form__col-a">
               <label class="contact-form__label" for="telefone"></label>
@@ -156,9 +148,7 @@
             </div>
           </div>
 
-
-
-        <!-- Endereço 3 -->
+          <!-- Endereço 3 -->
           <div class="contact-form__linha">
             <div class="contact-form__col-a">
               <label class="contact-form__label" for="telefone"></label>
@@ -171,48 +161,88 @@
                 placeholder="+55"
                 type="number"
               />
-             
             </div>
           </div>
 
-
-        <!-- Endereço 3 -->
+          <!-- Endereço 3 -->
           <div class="contact-form__linha">
             <div class="contact-form__col-a">
-              <label class="contact-form__label" for="telefone">Anotações</label>
+              <label class="contact-form__label" for="telefone"
+                >Anotações</label
+              >
             </div>
             <div class="contact-form__col-b">
-              <textarea 
-                class="contact-form__textarea"  
-                name="anotacoes" 
-                id="anotacoes" placeholder="Anotações"
+              <textarea
+                class="contact-form__textarea"
+                name="anotacoes"
+                id="anotacoes"
+                placeholder="Anotações"
               ></textarea>
-             
             </div>
           </div>
-        
+
           <!-- Botões -->
           <div class="contact-form__linha">
-            <div class="contact-form__col-a">
-            </div>
+            <div class="contact-form__col-a"></div>
             <div class="contact-form__col-b">
-             <button 
+              <button
                 type="button"
                 id="cadastrar"
                 name="cadastrar"
                 class="contact-form__button contact-form__input--metade"
-              >Cadastrar</button>
-             <button 
+                onclick="minhaFuncao()"
+              >
+                Cadastrar
+              </button>
+              <button
                 type="reset"
                 id="limpar"
                 name="limpar"
                 class="contact-form__button contact-form__input--metade"
-             >Limpar</button>
+              >
+                Limpar
+              </button>
             </div>
           </div>
-
         </form>
       </div>
     </main>
+
+    <!-- colocar javascript antes de fechar o body do html -->
+    <script>
+      function minhaFuncao() {
+        let nome = document.getElementById("nome").value.trim();//pega o valor do campo com id nome
+        let sobrenome = document.getElementById("sobrenome").value.trim();//pega o valor do campo com id nome
+        let email = document.getElementById("email").value.trim();//pega o valor do campo com id nome
+        
+        // valida o preenchimento do campo nome
+      if(nome.length == 0){//se o nome estiver vazio
+        formError("nome");
+      } else {
+        reiniciaBorda("nome");
+      }
+    
+      // valida o preenchimento do campo nome
+      if(sobrenome.length == 0){//se o nome estiver vazio
+        formError("sobrenome");
+      } else {
+        reiniciaBorda("sobrenome");
+      }
+
+        
+
+      }//fim da função
+
+
+      // função que pinta a borda do campo que falta preencher
+      function formError(fildId) {
+        document.getElementById(fildId).style.border = "1px solid red";
+      }
+      
+      // função que pinta a borda do campo que falta preencher
+      function reiniciaBorda(fildId) {
+        document.getElementById(fildId).style.border = "none";
+      }
+    </script>
   </body>
 </html>
