@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace;
+}
+
+/******************** HEADER ********************/
+
+header {
+  width: 100%;
+  height: 100px;
+  /* border: 1px solid black; */
+}
+
+/* Container - usado pra centralizar o conteúdo do site */
+.layout-grid {
+  margin: 0 auto;
+  width: 1200px;
+  height: 100%;
+  /* border: 1px solid red; */
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logotipo */
+header img {
+  width: 140px;
+  /* border: 1px solid green; */
+}
+
+/* Menu */
+header nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 330px;
+  /* border: 1px solid green; */
+}
+
+/* links precisam ser estilizados separadamente */
+header nav a {
+  text-decoration: none;
+  color: #000000;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/******************** BANNER ********************/
+
+.banner {
+    position: relative; /*referencial é ele próprio*/
+    width: 100%;
+    /* height: 500px; */
+}
+
+.banner img {
+    width: 100%;
+}
+
+/* Get Started */
+.banner a {
+    /* referencial de posicionamento é o primeiro ancestral que tiver algum position definido */
+    position: absolute;
+    top: calc((50% - 45px / 2) + 100px); /* ajuste técnico - work arround */
+    left: calc(50% - 155px / 2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 155px;
+    height: 45px;
+    background-color: #444444;
+    color: #ffffff;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+
+/******************** REASON TO USE ********************/
+.reason-to-use {
+    height: 500px;
+}
+
+.reason-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.reason-to-use .reason-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+}
+
+/* imagem redonda */
+.reason-to-use .reason-card .imagem {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #000000;
+    border-radius: 50%;
+}
+
+
+.reason-to-use .reason-card h2 {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.reason-to-use .reason-card p {
+    color: #575656;
+}
