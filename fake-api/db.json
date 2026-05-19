@@ -1,0 +1,108 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "Eduardo",
+      "idade": 30
+    }
+  ],
+  "imc": [
+    {
+      "nome": "Eduardo",
+      "altura": 1.67,
+      "peso": 85,
+      "IMC": 30.477966223242138,
+      "textoSituacao": "Obesidade Grau I",
+      "id": 1
+    },
+    {
+      "nome": "Marcos",
+      "altura": 1.72,
+      "peso": 78,
+      "IMC": 26.365603028664147,
+      "textoSituacao": "Sobrepeso",
+      "id": 2
+    },
+    {
+      "nome": "Maria Eduarda",
+      "altura": 1.67,
+      "peso": 50,
+      "IMC": 17.92821542543655,
+      "textoSituacao": "Magreza leve",
+      "id": 3
+    },
+    {
+      "nome": "Mariana",
+      "altura": 1.9,
+      "peso": 85,
+      "IMC": 23.545706371191137,
+      "textoSituacao": "Saudável",
+      "id": 4
+    },
+    {
+      "nome": "Ivan",
+      "altura": 1.7,
+      "peso": 88,
+      "IMC": 30.449826989619382,
+      "textoSituacao": "Obesidade Grau I",
+      "id": 5
+    },
+    {
+      "nome": "Giovana",
+      "altura": 1.6,
+      "peso": 60,
+      "IMC": 23.437499999999996,
+      "textoSituacao": "Saudável",
+      "id": 6
+    },
+    {
+      "nome": "Rafaela",
+      "altura": 1.65,
+      "peso": 60,
+      "IMC": 22.03856749311295,
+      "textoSituacao": "Saudável",
+      "id": 7
+    },
+    {
+      "nome": "Milena",
+      "altura": 1.73,
+      "peso": 68,
+      "IMC": 22.720438370810918,
+      "textoSituacao": "Saudável",
+      "id": 8
+    },
+    {
+      "nome": "Rawany",
+      "altura": 1.69,
+      "peso": 50,
+      "IMC": 17.506389832288786,
+      "textoSituacao": "Magreza leve",
+      "id": 9
+    },
+    {
+      "nome": "Kauã",
+      "altura": 1.78,
+      "peso": 77,
+      "IMC": 24.302487059714682,
+      "textoSituacao": "Saudável",
+      "id": 10
+    },
+    {
+      "nome": "Isabella",
+      "altura": 1.75,
+      "peso": 79,
+      "IMC": 25.79591836734694,
+      "textoSituacao": "Sobrepeso",
+      "id": 11
+    },
+    {
+      "nome": "Amanda",
+      "altura": 1.67,
+      "peso": 60,
+      "IMC": 21.513858510523864,
+      "textoSituacao": "Saudável",
+      "id": 12
+    }
+  ],
+  "calculadora" : []
+}

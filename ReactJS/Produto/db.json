@@ -1,0 +1,21 @@
+{
+  "produtos": [
+    {
+      "nome": "Eduardo",
+      "descricao": "Computador Game",
+      "preco": 4599,
+      "quantidade": 1,
+      "imagem": "image.jpg",
+      "id": "AjSk2BifH44"
+    },
+    {
+      "nome": "Celular",
+      "descricao": "Samsumg A16",
+      "preco": 1498,
+      "quantidade": 20,
+      "imagem": "image.jpg",
+      "id": "d1ecvmNzZHg"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

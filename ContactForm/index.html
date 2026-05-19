@@ -190,7 +190,7 @@
                 id="cadastrar"
                 name="cadastrar"
                 class="contact-form__button contact-form__input--metade"
-                onclick="minhaFuncao()"
+                onclick="validarFormulario()"
               >
                 Cadastrar
               </button>
@@ -209,40 +209,6 @@
     </main>
 
     <!-- colocar javascript antes de fechar o body do html -->
-    <script>
-      function minhaFuncao() {
-        let nome = document.getElementById("nome").value.trim();//pega o valor do campo com id nome
-        let sobrenome = document.getElementById("sobrenome").value.trim();//pega o valor do campo com id nome
-        let email = document.getElementById("email").value.trim();//pega o valor do campo com id nome
-        
-        // valida o preenchimento do campo nome
-      if(nome.length == 0){//se o nome estiver vazio
-        formError("nome");
-      } else {
-        reiniciaBorda("nome");
-      }
-    
-      // valida o preenchimento do campo nome
-      if(sobrenome.length == 0){//se o nome estiver vazio
-        formError("sobrenome");
-      } else {
-        reiniciaBorda("sobrenome");
-      }
-
-        
-
-      }//fim da função
-
-
-      // função que pinta a borda do campo que falta preencher
-      function formError(fildId) {
-        document.getElementById(fildId).style.border = "1px solid red";
-      }
-      
-      // função que pinta a borda do campo que falta preencher
-      function reiniciaBorda(fildId) {
-        document.getElementById(fildId).style.border = "none";
-      }
-    </script>
+    <script src="./js/script.js"></script>
   </body>
 </html>
