@@ -1,14 +1,3 @@
-/*
-
-Ivan
-Arthur
-Gomes
-João
-Paulo
-Matheus
-
-*/
-
 import "./produto.css";
 import { useEffect, useState } from "react";
 import img from "../../assets/image.jpg";
