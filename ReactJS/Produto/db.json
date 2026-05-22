@@ -1,20 +1,36 @@
 {
   "produtos": [
     {
-      "nome": "Eduardo",
-      "descricao": "Computador Game",
-      "preco": 4599,
-      "quantidade": 1,
+      "nome": "Carrinho de Computadores",
+      "descricao": "Carrinho para guardar os notebooks da escola",
+      "preco": 1500,
+      "quantidade": 2,
       "imagem": "image.jpg",
-      "id": "AjSk2BifH44"
+      "id": "SW0fUGSlbAk"
     },
     {
-      "nome": "Celular",
-      "descricao": "Samsumg A16",
-      "preco": 1498,
-      "quantidade": 20,
+      "nome": "Almeira Prado 2",
+      "descricao": "teste prado",
+      "preco": 12,
+      "quantidade": 12,
       "imagem": "image.jpg",
-      "id": "d1ecvmNzZHg"
+      "id": "KWSi9mAhpA0"
+    },
+    {
+      "nome": "Almeira Prado 2",
+      "descricao": "teste prado",
+      "preco": 12,
+      "quantidade": 12,
+      "imagem": "image.jpg",
+      "id": "OmV-7FIGDJQ"
+    },
+    {
+      "nome": "Teste 2",
+      "descricao": "teste prado",
+      "preco": 122,
+      "quantidade": 29,
+      "imagem": "image.jpg",
+      "id": "6m-ATG3y8K4"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

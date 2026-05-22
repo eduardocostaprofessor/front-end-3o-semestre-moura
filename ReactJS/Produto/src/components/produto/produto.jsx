@@ -1,9 +1,14 @@
-import "./produto.css";
 import { useEffect, useState } from "react";
 import img from "../../assets/image.jpg";
+import api from "../../services/services";
+
+import "./produto.css";
+
 
 export default function Produto() {
+  
   // states e variáveis
+  const [id, setId] = useState(0); // usado no editar
   const [nome, setNome] = useState("");
   const [preco, setPreco] = useState(0);
   const [descricao, setDescricao] = useState("");
@@ -14,6 +19,27 @@ export default function Produto() {
   const [arrProdutos, setArrProdutos] = useState([]);
 
   // ciclos de vida e funções
+  useEffect(() => {
+    getProdutos();
+  }, []);
+
+
+   async function getProdutos() {
+    try {
+      // faz requisição na api
+      const retornoAPI = await api.get("/produtos")
+      // transforma o retorno que é json em objeto javascript
+      const dados = await retornoAPI.data
+
+      // console.log(dados);
+      // inserir os dados no state
+      setArrProdutos(dados);
+    } catch (error) {
+      console.log("Erro ao buscar os produtos");
+      console.log(error);
+    }
+  }
+  
   async function cadastrarProduto(e) {
     e.preventDefault(); //não deixa o formulário ser postado
 
@@ -25,7 +51,9 @@ export default function Produto() {
       nome.trim().length == 0 ||
       descricao.trim().length == 0 ||
       isNaN(preco) ||
-      isNaN(quantidade)
+      preco <= 0 ||
+      isNaN(quantidade) ||
+      quantidade <= 0
     ) {
       alert("Preencha os campos corretamente!");
       return false;
@@ -39,24 +67,18 @@ export default function Produto() {
       preco,
       quantidade: quantidade,
       imagem: "image.jpg",
-    };
+    }
 
     console.log(objCadastro);
 
     // cadastrar na api
     try {
-      const retornoAPI = await fetch("http://localhost:3000/produtos", {
-        method: "POST",
-        body: JSON.stringify(objCadastro),
-        headers: {
-          "Content-Type": "application/json; carset=UTF-8",
-        },
-      });
+      const retornoAPI = await api.post("/produtos", objCadastro)
 
       console.log(retornoAPI);
       // validando o retorno da API
       if (retornoAPI.status == 201) {
-        const dadosCadastrados = await retornoAPI.json();
+        const dadosCadastrados = await retornoAPI.data
         //console.log(dadosCadastrados);//dado que acabou de ser cadastrado
         setArrProdutos([...arrProdutos, dadosCadastrados]);
         alert("Produto cadastrado com sucesso");
@@ -71,39 +93,57 @@ export default function Produto() {
     }
   }
 
-  // Fubnção que reinicia os states pra limpar o formulário
-  function limparFormulario() {
-    setNome("");
-    setDescricao("");
-    setQuantidade(0);
-    setPreco(0);
-  }
+   async function editarProduto(e) {
+    e.preventDefault(); //Evita de postar o formulário
 
-  useEffect(() => {
-    getProdutos();
-  }, []);
+    // validar o formulário se está tudo preenchido
+    if (
+      nome.trim().length == 0 ||
+      descricao.trim().length == 0 ||
+      isNaN(preco) ||
+      preco <= 0 ||
+      isNaN(quantidade) ||
+      quantidade <= 0
+    ) {
+      alert("Preencha os campos corretamente!");
+      return false;
+    }
 
-  async function getProdutos() {
+    //gerar o objeto que vai pra api
+    const objCadastro = {
+      nome,
+      descricao,
+      preco,
+      quantidade: quantidade,
+      imagem: "image.jpg",
+    };
+
+    // chamar a api
     try {
-      // faz requisição na api
-      const retornoAPI = await fetch("http://localhost:3000/produtos");
-      // transforma o retorno que é json em objeto javascript
-      const dados = await retornoAPI.json();
+      const retornoAPI = await axios.put(`/produtos/${id}`, objCadastro);
 
-      console.log(dados);
-      // inserir os dados no state
-      setArrProdutos(dados);
+      if (retornoAPI.status == 200) {
+        alert("Produto alterado com sucesso");
+        getProdutos(); // listar os dados
+        limparFormulario(); // limpar o form
+        setEditar(false);
+      } else {
+        alert("Erro ao editar");
+      }
     } catch (error) {
-      console.log("Erro ao buscar os produtos");
+      alert("Erro ao editar o produto");
       console.log(error);
     }
-  }
+  } //fim da função editarProduto
 
-  async function deletar(id) {
+ async function deletar(id) {
+
+      if(!confirm("Você quer realmente apagar o produto?")) {
+        return false;
+      }
+
     try {
-      const retornoAPI = await fetch(`http://localhost:3000/produtos/${id}`, {
-        method: "delete",
-      });
+      const retornoAPI = await api.delete(`/produtos/${id}`);
 
       if (retornoAPI.status == 200 && retornoAPI.statusText == "OK") {
         alert("Produto apagado com sucesso");
@@ -124,15 +164,17 @@ export default function Produto() {
     }
   }
 
-  function editarProduto(e) {
-    e.preventDefault();
-    // alert("Função Editar Chamada");
-
-    // fazer o put para editar os dados
-    // chamar a função de getDados novamente para mostrar os dados atualizados
+  // Função que reinicia os states pra limpar o formulário
+  function limparFormulario() {
+    setId(0);
+    setNome("");
+    setDescricao("");
+    setQuantidade(0);
+    setPreco(0);
   }
 
-  // desenho do componente na tela em si
+  
+  // desenho do componente na tela em si JSX
   return (
     <>
       <header className="cabecalho">
@@ -189,6 +231,7 @@ export default function Produto() {
             className="btn--cadastro"
             onClick={() => {
               setEditar(false); // faz esconder o botão editar
+              setId(0);
               limparFormulario(); //reseta os states dos inputs
             }}
           >
@@ -227,6 +270,7 @@ export default function Produto() {
                 // mostrar dados no form pra edição
 
                 setEditar(true); // faz mostrar o botão editar
+                setId(prod.id);
                 setNome(prod.nome);
                 setDescricao(prod.descricao);
                 setPreco(prod.preco);
@@ -240,4 +284,5 @@ export default function Produto() {
       </section>
     </>
   );
-}
+
+}//fim do componente Produto
