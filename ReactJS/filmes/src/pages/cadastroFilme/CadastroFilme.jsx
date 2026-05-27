@@ -1,6 +1,6 @@
 import Header from "../../components/header/Header";
-import "./CadastroFilme.css";
 import Footer from "../../components/footer/Footer"
+import "./CadastroFilme.css";
 
 const CadastroFilme = () => {
   return (

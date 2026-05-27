@@ -1,0 +1,21 @@
+{
+  "Genero": [
+    {
+      "nome": "Terror",
+      "id": "-Dc85r_WZCc"
+    },
+    {
+      "nome": "Eduardo",
+      "id": "8zE7tUOt5gU"
+    },
+    {
+      "nome": "Comédia",
+      "id": "1iIJpadEy1k"
+    },
+    {
+      "nome": "Comédia",
+      "id": "l-hBJ0wqWr0"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
