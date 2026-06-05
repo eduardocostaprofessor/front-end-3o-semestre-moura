@@ -11,7 +11,7 @@ import Botao from "../botao/Botao";
 const Cadastro = (props) => {
     return (
         <section className="section_cadastro">
-            <form onSubmit={props.funcCadastro} className="layout_grid form_cadastro">
+            <form onSubmit={props.funcCadastro} className="layout_grid form_cadastro" encType="multipart/form-data">
                 <h1>{props.tituloCadastro}</h1>
                 <hr />
                 <div className="campos_cadastro">
@@ -26,13 +26,36 @@ const Cadastro = (props) => {
                     </div>
                     <div className="campo_cad_genero" style={{ display: props.visibilidade }}>
                         <label htmlFor="genero">Gênero</label>
-                        <select name="genero" id="">
-                            <option value="" disabled >Selecione</option>
-                            <option value="">op 1</option>
-                            <option value="">op 2</option>
-                            <option value="">op 3</option>
+                        <select name="genero" id=""
+                        
+                        onChange={(e)=>{
+                            // para cadastro de filme
+                            props.setValorGenero(e.target.value)
+                        }}
+                        >
+                            <option value="" >Selecione</option>
+                            {
+                                props.listaGeneros?.map((item) => {
+                                    return (
+                                       <option key={item.idGenero} value={item.idGenero}>{item.nome}</option>
+                                    )
+                                })
+                            }
                         </select>
                     </div>
+
+                    <div className="campos_cadastro" style={{ display: props.visibilidade }}>  
+                        <input 
+                            type="file" 
+                            id="imageUpload"
+                            accept="image/*" 
+                            value={props.imagem}
+                            onChange={(e)=> {
+                                props.setImagem(e.target.files[0])
+                            }}  
+                        />
+                    </div>
+
 
                     {/* mostrar/esconder botão Cancelar */}
                     {

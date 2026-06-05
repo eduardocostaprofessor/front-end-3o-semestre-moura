@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import { Alerta } from "../../components/alerta/Alerta";
 
 const CadastroGenero = () => {
+  
   // variáveis e states
   const [valor, setValor] = useState("");
   const [listaGeneros, setListaGeneros] = useState([]);
@@ -17,7 +18,9 @@ const CadastroGenero = () => {
   
 
   // funções e ciclo de vida"
-
+    
+// Funções
+  // Get
   const getGeneros = async () => {
     try {
       const retornoAPI = await api.get("/Genero"); // chama a api
@@ -34,11 +37,9 @@ const CadastroGenero = () => {
     }
   };
 
-  // ciclo de vida
-  useEffect(() => {
-    getGeneros();
-  }, []);
 
+  
+  // Post
   const cadastrarGenero = async (e) => {
     e.preventDefault();
 
@@ -82,13 +83,52 @@ const CadastroGenero = () => {
       console.log(error);
     }
   }; //fim da função cadastrarGenero
-
-  const limparFormulario = () => {
-    setValor("");
-    setEditar(false);
-    setId(0); // resetar o id
+  
+// Put
+  // mostra os dados no formulário para o usuário editar
+  const preEditar = (item) => {
+    setEditar(true);
+    setValor(item.nome);
+    setId(item.id);
   };
 
+  // Editar Gênero
+  const editarGenero = async (e) => {
+    e.preventDefault(); //para o postar do formulário submit
+    // Validar o formulário
+    if (valor.trim().length == 0) {
+      alert("Preencher o gênero");
+      return false;
+    }
+    const objEditar = {
+      nome: valor,
+    };
+    // cadastrar na api com o put
+    try {
+      const retornoAPI = await api.put(`/Genero/${id}`, objEditar);
+      limparFormulario();
+      getGeneros();
+      // alert("Gênero atualizado");
+      Alerta({
+        title: "Cadastro de Gênero",
+        text: "Gênero atualizado",
+        icon: "success",
+        confirmButtonText: "Ok",
+      });
+    } catch (error) {
+      // alert("Erro ao atualiar os dados na API");
+      Alerta({
+        title: "Cadastro de Gênero",
+        text: "Erro ao atualiar os dados na API",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+
+      console.log(error);
+    }
+  };
+
+  // Delete
   const excluirGenero = async (item) => {
    const result =  await Alerta({
       title: "Cadastro de Gênero",
@@ -139,48 +179,17 @@ const CadastroGenero = () => {
     }
   }; //fim da função excluirGenero
 
-  // mostra os dados no formulário para o usuário editar
-  const preEditar = (item) => {
-    setEditar(true);
-    setValor(item.nome);
-    setId(item.id);
+  // Outras funções
+  const limparFormulario = () => {
+    setValor("");
+    setEditar(false);
+    setId(0); // resetar o id
   };
 
-  // Editar Gênero
-  const editarGenero = async (e) => {
-    e.preventDefault(); //para o postar do formulário submit
-    // Validar o formulário
-    if (valor.trim().length == 0) {
-      alert("Preencher o gênero");
-      return false;
-    }
-    const objEditar = {
-      nome: valor,
-    };
-    // cadastrar na api com o put
-    try {
-      const retornoAPI = await api.put(`/Genero/${id}`, objEditar);
-      limparFormulario();
-      getGeneros();
-      // alert("Gênero atualizado");
-      Alerta({
-        title: "Cadastro de Gênero",
-        text: "Gênero atualizado",
-        icon: "success",
-        confirmButtonText: "Ok",
-      });
-    } catch (error) {
-      // alert("Erro ao atualiar os dados na API");
-      Alerta({
-        title: "Cadastro de Gênero",
-        text: "Erro ao atualiar os dados na API",
-        icon: "error",
-        confirmButtonText: "Ok",
-      });
-
-      console.log(error);
-    }
-  };
+  // Ciclo de Vida do componente
+  useEffect(() => {
+    getGeneros();
+  }, []);
 
   // o JSX em si (XML E HTML)
   return (
