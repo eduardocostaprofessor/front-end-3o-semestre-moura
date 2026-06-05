@@ -28,7 +28,7 @@ const Perfil = () => {
             // setListaUsuarios( [ ...listaUsuarios, novoUsuario ] );
           }}
         >
-          Alterar Usuário
+          Entrar
         </button>
       </p>
     </>

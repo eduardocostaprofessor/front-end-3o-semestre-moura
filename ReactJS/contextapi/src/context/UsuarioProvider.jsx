@@ -2,7 +2,7 @@ import { useState } from "react"
 import { UsuarioContext } from "./UsuarioContext"
 
 const UsuarioProvider = ( {children} ) => {
-    const [usuario, setUsuario] = useState("Eduardo")
+    const [usuario, setUsuario] = useState(null)
     // const [listaUsuarios, setListaUsuarios] = useState([])
     
     return (
