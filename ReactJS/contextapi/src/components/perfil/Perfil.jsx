@@ -5,27 +5,33 @@ const Perfil = () => {
   //   state global (UsuarioContext)
   const { usuario, setUsuario } = useContext(UsuarioContext);
   // state local
-  const [novoUsuario, setNovoUsuario] = useState("");
-  
+  //******************** novoUsuario = email **************
+  const [email, setEmail] = useState("");
+
+  const login = () => {
+
+    setUsuario(novoUsuario);
+    // guarda o usuário no localStorage no formato JSON (string)
+    localStorage.setItem("usuario", JSON.stringify(email)); // pegar o dado e colocar no storage
+    setEmail("");
+  };
+
   return (
     <>
       <h2>Página de perfil do usuário</h2>
       <span>Usuário: {usuario}</span>
       <p>
-        <input 
-            type="text" 
-            placeholder="Novo usuário" 
-            value={novoUsuario}
-            onChange={(e) => {
-                setNovoUsuario(e.target.value)
-            }}
+        <input
+          type="text"
+          placeholder="Novo usuário"
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
         />
         <button
           onClick={() => {
-            // quero alterar o usuário
-            setUsuario(novoUsuario);
-            setNovoUsuario("")
-            // setListaUsuarios( [ ...listaUsuarios, novoUsuario ] );
+           login()
           }}
         >
           Entrar
