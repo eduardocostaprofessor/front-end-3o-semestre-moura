@@ -8,7 +8,7 @@ const UsuarioProvider = ( {children} ) => {
     // ciclo de vida
     useEffect(()=>{
         // ao montar o componente, pega os dados do usuário do localStorage
-        const usuarioStorage = JSON.parse(localStorage.getItem("usuario")) || ""
+        const usuarioStorage = JSON.parse(localStorage.getItem("usuario")) || null
         setUsuario(usuarioStorage)
     },[])
     return (
