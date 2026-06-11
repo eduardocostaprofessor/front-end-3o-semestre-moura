@@ -10,7 +10,7 @@ const Perfil = () => {
 
   const login = () => {
 
-    setUsuario(novoUsuario);
+    setUsuario(email);
     // guarda o usuário no localStorage no formato JSON (string)
     localStorage.setItem("usuario", JSON.stringify(email)); // pegar o dado e colocar no storage
     setEmail("");

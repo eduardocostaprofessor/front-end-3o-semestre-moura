@@ -13,9 +13,11 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
+          {/* Rotas Públicas */}
           <Route path="/" element={<Home />} />
           <Route path="/perfil" element={<Perfil />} />
 
+          {/* Rotas Privadas */}
           <Route path="/myPage" element={
             <PrivateRoute>
                <MyPage />{/* children*/}
